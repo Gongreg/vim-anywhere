@@ -46,7 +46,7 @@ require_one_installed() {
 }
 
 AW_PATH=$HOME/.vim-anywhere
-AW_URL='https://github.com/cknadler/vim-anywhere'
+AW_URL='https://github.com/gongreg/vim-anywhere'
 
 ###
 # pre-installation checks
@@ -127,6 +127,7 @@ elif [[ $OSTYPE == "darwin"* ]]; then
   # install the workflow as a service
   mkdir -p $HOME/Library/Services
   cp -R $AW_PATH/VimAnywhere.workflow $HOME/Library/Services
+  cp -R $AW_PATH/VimAnywhereCopy.workflow $HOME/Library/Services
 
   # Set default keybindings
   defaults write pbs NSServicesStatus '{
@@ -135,6 +136,12 @@ elif [[ $OSTYPE == "darwin"* ]]; then
     };
     "org.vim.MacVim - MacVim/New MacVim Buffer With Selection - openSelection" = {
       "key_equivalent" = "@^v";
+    };
+    "(null) - VimAnywhereCopy - runWorkflowAsService" = {
+      "key_equivalent" = "@^n";
+    };
+    "org.vim.MacVim - MacVimCopy/New MacVim Buffer With Selection - openSelection" = {
+      "key_equivalent" = "@^n";
     };
   }'
 
